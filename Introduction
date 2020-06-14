@@ -1,0 +1,62 @@
+Python 基本操作
+    中文编码-- #coding=utf-8
+    单行注释符-- #
+    多行注释符-- ‘‘‘ ’’’ 
+    导入库-- import xxx as 
+        库是具有特定功能的组件，Python拥有多种内置的标准库和其他第三方库，
+        使数据处理和分析更为便捷，Anaconda的图形界面可以方便地安装这些库。
+    常见库--
+        NumPy （科学计算）
+        Pandas （数据统计）
+        Matplotlib （可视化）
+        Statsmodels （统计建模）
+数据导入、保存与导出
+    improt Numpy as np
+    import Pandas as pd
+
+    # csv文件
+
+    x= pd.read_csv('data.csv') # 当列索引存在时
+    print x  
+
+    # 当索引不存在时，默认从0开始索引；name函数可以设置列索引
+    x= pd.read_csv('data.csv',names=['A','B','C','D']) 
+
+    # 使用pandas读取csv文件时可以定义10个参数，常用的主要为：
+    (1)文件路径；
+    (2)encoding='' #编码方式
+    (3)header= #指定某行为列名，为从0开始的整数，可以为list或None
+    (4)names= #额外指定列名，为list
+    
+    写入csv文件，to_csv() # 如本来已存在文件，则会清空后写入
+    # 主要参数如下：
+    (1)header
+    (2)columns # list，指定列的写入顺序
+    (3)index_label # 字符串或布尔型变量，设置索引列列名
+    (4)index # 布尔型，是否写入索引列
+
+    # Excel文件
+
+    x= pd.read_excel('data.xlsx') # 读取excel数据
+    print x 
+
+    # 使用pandas读取excel文件时常用的参数主要为：
+    (1)io # 必填参数，需要读取的文件路径
+    (2)sheet_name # 指定读取的sheet，索引从0开始；可以为字符串和list
+    # 当sheet_name为list时，返回以list元素为键、dataframe为值的字典
+    # sheet_name=None，表示返回所有sheet
+    (3)header # 指定表头索引，默认为0，即第1行；可以为list
+    (4)index_col # 指定行标签，默认为None；可以为list
+    (5)usecol #指定加载的列（显示的列）；可以为list
+
+    写入excel文件，to_excel() # DataFrame对象内定义
+    # 常用参数主要有：
+    (1)excel_writer # 必传参数，文件路径
+    (2)sheet_name # 写入表，默认为sheet1
+    (3)float_format # 指定浮点数类型，如%%.2f即保留两位小数
+    (4)na_rep # 字符型，写入空值的符号
+    (5)header # 写入表头
+    (6)index # 布尔型，是否写入行号，默认是TRUE
+    (7)columns # 指定写入文件的列，list元素可为整型和字符串
+
+
