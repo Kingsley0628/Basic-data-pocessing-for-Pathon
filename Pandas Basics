@@ -1,1 +1,41 @@
-1
+pandas数据结构
+    s=pd.Series() # Series
+    Df=pd.DataFrame(data, index=, columns=[]) # data为数据集；index为行标签；columns为列标签（表头）
+
+Series
+    s.values与s.index用于显示series的属性
+    series中的index可以list的形式自定义
+
+DataFrame
+    DataFrame以二维表的形式存储数据，以（index, column)确定每个坐标
+    dict定义DataFrame对象，key为columns_names，key_values为columns，且columns可以自定义顺序
+
+data_range
+    data_range(start=, end=, periods=, freq=, tz=, normalize=, name=, closed=, )
+    '''
+    函数说明：
+    (1)调用时，start, end, periods必须选择其二，可以为None；
+    (2)freq：日期偏移量，默认为'D'；
+    (3)closed: 可为None, left, right,表示该处开区间
+    '''
+
+运算：
+    运算时排除缺失值；不同维度对象运算时要先对齐
+    描述性统计：
+        --sum() # 求和
+        --mean() # 均值
+        --std() # 标准差
+        --count() # 非空计数
+        --median() # 中位数
+        --mode() # 模
+        --min/max() # 最小/最大值
+        --abs() # 绝对值
+        --prod() # 数组元素的乘积
+        --cumsum() # 累加
+        --cumprod() # 累乘
+
+基础用法：
+    head和tail用于快速预览，默认显示5条记录
+    
+         
+
