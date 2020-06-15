@@ -58,5 +58,3 @@ Python 基本操作
     (5)header # 写入表头
     (6)index # 布尔型，是否写入行号，默认是TRUE
     (7)columns # 指定写入文件的列，list元素可为整型和字符串
-
-
