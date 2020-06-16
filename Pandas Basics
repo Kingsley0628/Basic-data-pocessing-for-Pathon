@@ -36,6 +36,11 @@ data_range
 
 基础用法：
     head和tail用于快速预览，默认显示5条记录
+    DataFrame可以用方括号或点的形式选择列，如：df['name']或df.name
+    DataFrame可以通过调用ix或切片的形式选择行，如：df.ix(0)或df[0:1]
+    DataFrame数据选取支持常用的逻辑判断，包括多列选择、布尔值、逻辑判断符等
+    
+
     
          
 
