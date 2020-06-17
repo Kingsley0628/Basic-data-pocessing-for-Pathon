@@ -6,4 +6,33 @@
         --AR：ACF拖尾，PACF截尾
         --MA：ACF截尾，PACF拖尾
         --ARMA：ACF和PACF均拖尾
+    平稳性
+        --一般所说平稳时间序列是指弱平稳时间序列
+        --mean = constant; 存在二阶矩; 对所有时间t和时滞k, 自协方差相同
+        --Unit Root test, including DF test, ADF test, PP test, etc.
+
+Coding:
+    ACF&PACF coding:
+        import statsmodels.tsa.api as smt
+        help(smt.stattools.acf)
+        '''
+        acf(x, unbiased=False, nlags=40, qstat=False, fft=False, alpha=None, missing='none')
+        x: array, time series data
+        nlags: int, default is 40
+        qstat: bool, if True, returns the Ljung-Box Q-statistic
+        alpha: scalar, confidence interval is 1-alpha
+        '''
+
+        help(smt.stattools.pacf)
+        '''
+        pacf(x, nlags=40, method='ywunbiased', alpha=None)
+        x: array, time series data
+        nlags: int, default is 40
+        method: {'ywunbiased', 'ywmle', 'ols'}
+            --ywunbiased: default, yule walker with bias correction in denominator for acovf
+            --ywmle: yule walker without bias correction
+            --ols: regression of time series on lags of it and on constant
+        alpha: scalar, confidence interval is 1-alpha
+        '''
+        
         
