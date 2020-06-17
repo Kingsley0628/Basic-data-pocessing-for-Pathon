@@ -1,0 +1,9 @@
+一点基础知识：
+    截尾&拖尾
+        --截尾：指ACF或PACF在某阶后均为0的性质
+        --拖尾：指ACF或PACF并不在某阶后均为0的性质
+    模型定型
+        --AR：ACF拖尾，PACF截尾
+        --MA：ACF截尾，PACF拖尾
+        --ARMA：ACF和PACF均拖尾
+        
