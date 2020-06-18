@@ -1,0 +1,43 @@
+# 调用WindPy
+from WindPy import w
+w.start() # 启动接口
+w.isconnected() # 判断是否登录成功
+w.stop() # 停止命令
+
+w.wsd（codes, fields, beginTime, endTime, options） # 获取日时间序列函数
+    '''
+    codes: 证券代码，可为list
+    fields： 指标，可为list
+    options： 集成在option中的可选参数，String，
+        常用参数包括：
+        Days: --Weekdays 工作日
+              --Alldays 日历日
+              --Trading 交易日
+        Order: --A 升序
+               --D 降序
+        Period: --D 天
+                --W 周
+                --M 月
+                --Q 季度
+                --S 半年
+                --Y 年
+        PriceAdj: --F 前复权
+                  --B 后复权
+                  --T 定点复权
+                  --CP 净价
+                  --DP 全价
+                  --MP 市价
+                  --YTM 收益率
+    '''
+
+w.wss（codes, fields, option） # 获取日截面函数
+    '''
+    codes，fields, options 参数释义同上
+    二者均支持DataFrame 格式输出，需添加参数 usedf = True
+    '''
+
+w.edb(codes, beginTime, endTime, options) # 获取全球宏观经济数据函数
+    '''
+    codes： 宏观数据的代码，可以借助代码生成器
+    edb函数支持DataFrame格式输出，需添加参数 usedf = True
+    使用非公开参数showblank来处理空值。Showblank=后面的字符串会替代空值，并该字符串会被解释为数字。例如showblank=0，会用数字0来填充空值
