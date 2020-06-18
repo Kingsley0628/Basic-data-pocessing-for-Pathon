@@ -2,17 +2,26 @@
     截尾&拖尾
         --截尾：指ACF或PACF在某阶后均为0的性质
         --拖尾：指ACF或PACF并不在某阶后均为0的性质
-    模型定型
+    模型定阶
         --AR：ACF拖尾，PACF截尾
         --MA：ACF截尾，PACF拖尾
         --ARMA：ACF和PACF均拖尾
-    平稳性
+    平稳性检验
         --一般所说平稳时间序列是指弱平稳时间序列
         --mean = constant; 存在二阶矩; 对所有时间t和时滞k, 自协方差相同
-        --Unit Root test, including DF test, ADF test, PP test, etc.
+        --Unit Root test, including DF test, ADF test, PP test, et
+    非平稳转平稳
+
+
+    建模
+        --AR模型
+        --MA模型
+        --ARMA模型    
+        --ARCH模型
+        --GARCH模型
 
 Coding:
-    ACF&PACF coding:
+    ACF & PACF coding:
         import statsmodels.tsa.api as smt
         help(smt.stattools.acf)
         '''
@@ -34,5 +43,15 @@ Coding:
             --ols: regression of time series on lags of it and on constant
         alpha: scalar, confidence interval is 1-alpha
         '''
+
+    Arch & Garch coding:
+        from arch import arch_model
+        arch_model(y, x=None, mean='Constant', lags=0, vol='Garch', 
+                  p=1, o=0, q=1, power=2.0, dist='Normal', hold_back=None)
+        '''
+        y: 因变量
+        x：外生变量
+        mean：
+    
         
         
