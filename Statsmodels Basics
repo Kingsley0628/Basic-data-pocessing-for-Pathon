@@ -10,15 +10,21 @@
         --一般所说平稳时间序列是指弱平稳时间序列
         --mean = constant; 存在二阶矩; 对所有时间t和时滞k, 自协方差相同
         --Unit Root test, including DF test, ADF test, PP test, et
+        --The null hypothesis of the Augmented Dickey-Fuller is that there is a unit root
+        --If the pvalue is above a critical size, then we cannot reject that there is a unit root
     非平稳转平稳
-
 
     建模
         --AR模型
         --MA模型
         --ARMA模型    
         --ARCH模型
+            波动聚集+杠杆效应
+            步骤：均值模型（消除线性依赖）-均值残差检验（ARCH效应？）-波动率模型
         --GARCH模型
+            GARCH与ARMA相似，但一个是针对波动率，另一个则针对均值模型
+            GARCH定阶较难，常采用低阶模型，如GARCH（1,1），GARCH（1,2）等
+            ·
 
 Coding:
     ACF & PACF coding:
@@ -43,6 +49,21 @@ Coding:
             --ols: regression of time series on lags of it and on constant
         alpha: scalar, confidence interval is 1-alpha
         '''
+    
+    ADF test coding:
+        import statsmodels as sm
+        sm.tsa.stattools.adfuller(x, maxlag=None, regression='c', autolag='AIC', store=False, regresults=False) # ADF检验
+        '''
+        x: data series 
+        regression: {'c', 'ct', 'ctt', 'nc'}
+            c: constant only
+            ct: constant and trend
+            ctt: constant, and linear and quadratic trend
+            nc: no constant, no trend
+        autolag: {'AIC', 'BIC', 't-stat', None}
+            None: maxlag is used 
+            t-stat: based choice of maxlag. Starts with maxlag and drops a lag until the t-statistic on the last lag length is significant using a 5%-sized test
+            regresults: bool, if True, full regression results are returned
 
     Arch & Garch coding:
         from arch import arch_model
