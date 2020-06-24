@@ -65,6 +65,21 @@ Coding:
             t-stat: based choice of maxlag. Starts with maxlag and drops a lag until the t-statistic on the last lag length is significant using a 5%-sized test
             regresults: bool, if True, full regression results are returned
 
+        '''
+        The Dickey-Fuller GLS test is an improved version of the ADF which uses a GLS-detrending regression 
+        before running an ADF regression with no additional deterministic terms. 
+        This test is only available with a constant or constant and time trend.
+        '''
+        from unitroot import DFGLS
+        dfgls = DFGLS()
+    
+    PP test
+        from arch.unitroot import PhillipsPerron
+        pp = PhillipsPerron(data, lags, trend, test_type)
+        # test_type = {'tau', 'rho'}
+
+        # adf.regression 用于展示ADF检验的结果，使用summary().as_text()输出
+
     Arch & Garch coding:
         from arch import arch_model
         arch_model(y, x=None, mean='Constant', lags=0, vol='Garch', 
@@ -72,7 +87,27 @@ Coding:
         '''
         y: 因变量
         x：外生变量
-        mean：
+        mean: {'Constant', 'Zero', 'LS', 'AR', 'ARX', 'HAR', 'HARX'} # mean model mode 
+        vol: {'GARCH', 'ARCH', 'EGARCH', 'FIARCH', 'HARCH'} # volatility model mode 
+        p: Lag order of the symmetric innovation
+        o: Lag order of the asymmetric innovation
+        q: Lag order of lagged volatility or equivalent
+            '''
+            when o=1, the function is GJR-GARCH process
+            when power=1 (default 2), the function is TARCH/ZARCH process
+            '''
+        dist: {'Normal', 'Students's t', 'Skewed Students't', Generalized Error Distribution'} # error distribution
+
+        # when making a simple test, data could be loaded from arch.data.sp500
+
+        # 拟合函数
+        am = arch_model()
+        res = am.fit()
+            res.sumamry 展示结果
+            res.plot 结果绘图
+
+
+
     
         
         
