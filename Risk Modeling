@@ -1,0 +1,55 @@
+log(x, /, out=None, *, where=True, 
+    casting='same_kind', order='K', dtype=None, 
+    subok=True[, signature, extobj])
+# x: input value
+
+# MibianLib is an open source python library for options pricing
+# BS model
+c = BS([underlyingPrice, strikePrice, interestRate, daysToExpiration], 
+    volatility=x, callPrice=y, putPrice=z)
+c.impliedVolatility # return the implied volatility
+c.putCallParity # return the put-call parity
+
+# GK model
+c = GK([underlyingPrice, strikePrice, domesticRate, foreignRate, daysToExpiration], 
+    volatility=x, callPrice=y, putPrice=z)
+
+# Merton model
+c = Me([underlyingPrice, strikePrice, interestRate, annualDividends, daysToExpiration], 
+    volatility=x, callPrice=y, putPrice=z)
+
+# Scipy
+    # 统计
+    import scipy.stats as stats
+    stats.skewtest()
+    stats.kurtosistest()
+    stats.normaltest()
+    stats.scoreatpercentile(x, percentile) # 获取某一百分比处的数值
+    stats.percentileofscore(x, value) # 通过某一数值获取其百分比
+    stats.ttest_ind(x1, x2) # 均值检验
+    stats.ks_2samp(x1, x2) # Kolmogorov-Smirnov同分布检验
+    stats.jarque_bera() # JB正态性检验
+
+    # 优化
+    import scipy.optimize as optimize
+    optimize.curve_fit(f, xdata, ydata, p0=None, sigma=None, absolute_sigma=False, 
+                       check_finite=True, bounds=- inf, inf, method=None, 
+                       jac=None, **kwargs)  # 非线性拟合
+    '''
+    f: model function, 常用def来定义方程表达
+    xdata: independent variable
+    ydata: denpendent variable
+    method: {'lm', 'trf', 'dogbox'} # The method ‘lm’ won’t work when the number of observations is less than the number of variables
+    '''
+
+# KMV model
+    '''
+    based on Black-Scholes Model for options pricing
+    预期违约概率EDF = N(-DD) = 1-N(DD) # DD为违约距离
+    
+
+
+
+
+
+
